@@ -79,4 +79,24 @@ puts "this should only show the available books"
 library.available_books
 puts "-------------------------"
 
+# Below these lines are functions that I've added
+
+puts "this should add a review to Books with a rating"
+ricardo.user_review(stranger, 5, "I thought it was excellent")
+puts stranger.review
+puts "-------------------------"
+
+puts "this should add a review to Books with a rating"
+gilbert.user_review(stranger, 3, "I thought it was too long")
+puts stranger.review
+puts "-------------------------"
+
+puts "this should add a review to Books with a rating"
+mike.user_review(stranger, 2, "Totally lame!")
+puts stranger.review
+puts "-------------------------"
+
+puts "this function puts the average of all the ratings for a book"
+puts stranger.book_avg_rating
+puts "-------------------------"
 

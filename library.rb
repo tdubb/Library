@@ -100,6 +100,19 @@ class Borrower
     borrowed_books.each do |x|
       puts x.title
     end
+  end
+
+# this function adds a rating and a written_review to 
+# the books instance that is passed into it as the first
+# parameter. They are both stored in arrays.
+
+  def user_review(book, rating, written_review)
+    book.rating << rating
+    puts book.rating
+    book.review << "#{self.name}: '#{written_review}'"
+    puts "#{self.name} rated  #{book.title} a #{book.rating.pop} and said '#{written_review}'."
+    book.rating << rating
+    puts book.rating
 
   end
 
@@ -109,13 +122,27 @@ end
 # author, status, and borrower.
 
 class Book
-  attr_accessor :title, :author, :status, :borrower
+  attr_accessor :title, :author, :status, :borrower, :year_published, :edition, :rating, :review
   def initialize(title, author)
     @author = author
     @title = title
     @status = "available"
     @borrower = borrower
+    @review = []
+    @rating = []
     puts @title
   end
+
+# This function takes all the rating for a book
+# and returns its average to the first decimal place
+
+  def book_avg_rating
+    y = 0.0
+    self.rating.each do |x|
+      y += x
+    end
+    puts (y/(self.rating.length)).round(1)
+  end
+
 
 end
