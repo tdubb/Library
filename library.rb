@@ -1,3 +1,7 @@
+
+# This is the Library class and on it 
+# we can call and write books
+
 class Library 
   attr_accessor :books 
   def initialize
@@ -5,16 +9,16 @@ class Library
     puts "I'm a real library"
   end
 
-  def books
-    @books
-    puts @books
-  end
+  # list_books lists the books title and it's status
 
   def list_books
     @books.each do |book|
       puts "#{book.title}: #{book.status}"
     end
   end
+
+# borrowed_books lists which books have the status of 
+# unavailable as well as the name of the person who checked it out
 
   def borrowed_books
     @books.each do |book|
@@ -25,6 +29,8 @@ class Library
     end
   end
 
+  # available books lists the books with the status of available
+
   def available_books
     @books.each do |x|
       if x.status === "available"
@@ -34,10 +40,25 @@ class Library
     end
   end
 
+  # add_book puts a book into the @books array which 
+  # contains all the books in the library
+
   def add_book(book)
     @books << book
     puts book.title
   end
+
+# check_out calls borrowed_books on the instance 
+# of the borrower class passed to it as the parameter user
+# if the length of borrowed_books array is 2 it 
+# prevents that user from checking out another book
+# if the user has less then two books checked 
+# out then it checks to see if the status of the book 
+# requested has a status of available.  
+# If it does it will check it out
+# and update the status of the book as wel 
+# as the borrowed_books array along with
+# the borrower attribute associated with the book.
 
   def check_out(user, book)
     puts user.borrowed_books.length
@@ -52,11 +73,10 @@ class Library
       puts "Sorry #{book.title} is checked out."
     end
   end
-
-  def check_in(book)
-
-  end
 end
+
+# This is the Borrower class and on it we can call and write;
+# name, borrowed_books and title
 
 class Borrower
   attr_accessor :name, :borrowed_books
@@ -66,13 +86,15 @@ class Borrower
     @borrowed_books = []
   end
 
-  def title
-    @title 
-  end
+  # borrowed_books_count returns the number of 
+  # books borrowed by the Borrower instance
 
   def borrowed_books_count
     puts @borrowed_books.length
   end
+
+  # borrowed_books_list gives the title of all 
+  # unavailable books
 
   def borrowed_books_list
     borrowed_books.each do |x|
@@ -82,6 +104,9 @@ class Borrower
   end
 
 end
+
+# the Book class which on we can call and write; title, 
+# author, status, and borrower.
 
 class Book
   attr_accessor :title, :author, :status, :borrower
