@@ -17,16 +17,19 @@ class Library
   end
 
   def borrowed_books
-
-    
+    @books.each do |book|
+      if book.status === "unavailable"
+        puts "#{book.borrower.name}: #{book.title}"
+      else
+      end
+    end
   end
 
   def available_books
-    @books.each do |book|
-      if book.status === "available"
-        puts book
+    @books.each do |x|
+      if x.status === "available"
+        puts x.title
       else
-        nil
       end
     end
   end
@@ -37,46 +40,56 @@ class Library
   end
 
   def check_out(user, book)
-    if book.status === "available"
-      puts book.status = "unavailable"
+    puts user.borrowed_books.length
+    if user.borrowed_books.length >= 2
+      puts "Sorry #{user.name} you already have 2 books checked out."
+    elsif book.status === "available"
+      puts "You may check out #{book.title}"
+      user.borrowed_books << book
+      book.status = "unavailable"
+      book.borrower = user
     else
-      puts "sorry #{book} is checked out"
+      puts "Sorry #{book.title} is checked out."
     end
   end
 
   def check_in(book)
+
   end
 end
 
 class Borrower
-  attr_accessor :name 
+  attr_accessor :name, :borrowed_books
   def initialize(name)
     @name = name
     puts name
+    @borrowed_books = []
   end
 
-  def borrowed_books
-
-  end
-
-  def name
-    @name
+  def title
+    @title 
   end
 
   def borrowed_books_count
+    puts @borrowed_books.length
   end
 
   def borrowed_books_list
+    borrowed_books.each do |x|
+      puts x.title
+    end
 
   end
+
 end
 
 class Book
-  attr_accessor :title, :author, :status
+  attr_accessor :title, :author, :status, :borrower
   def initialize(title, author)
     @author = author
     @title = title
     @status = "available"
+    @borrower = borrower
     puts @title
   end
 
