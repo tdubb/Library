@@ -87,15 +87,15 @@ class Library
     end
     books.each do |x|
       x.each do |a, b|
-          # puts a.class
-          # c = a.to_sym 
-          # puts c.class
-          # c.class
-          c = Book.new(a, b)
-          # puts c.class
-          # puts a.class
-          self.add_book(c)
-      end
+        # puts a.class
+        c = a.to_sym 
+        # puts c.class
+        # c.class
+        c = Book.new(a, b)
+        # puts c.class
+        # puts a.class
+        self.add_book(c)
+      end 
     end
   end
 end
