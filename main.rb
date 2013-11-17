@@ -1,4 +1,6 @@
 require_relative "library.rb"
+require 'csv'
+
 
 puts "create our library"
 library = Library.new
@@ -99,4 +101,13 @@ puts "-------------------------"
 puts "this function puts the average of all the ratings for a book"
 puts stranger.book_avg_rating
 puts "-------------------------"
+
+puts "this function will import a cvs file of Title 
+and Author and create book class from each pair"
+# csv("/sample_export.csv")
+library.import_csv
+library.list_books
+    
+
+
 

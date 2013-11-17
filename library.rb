@@ -73,6 +73,31 @@ class Library
       puts "Sorry #{book.title} is checked out."
     end
   end
+
+# This is the function for importing a cvs file and 
+# creating an instance of book from the title and author.
+# it is incomplete the notes inside are for testing purposes
+  
+  def import_csv
+    books = []
+
+    CSV.foreach(File.path("sample_export.csv")) do |col|
+      # Where col corresponds to a zero-based value/column in the csv
+      books << ["#{col[0]}, #{col[1]}"]
+    end
+    books.each do |x|
+      x.each do |a, b|
+          # puts a.class
+          # c = a.to_sym 
+          # puts c.class
+          # c.class
+          c = Book.new(a, b)
+          # puts c.class
+          # puts a.class
+          self.add_book(c)
+      end
+    end
+  end
 end
 
 # This is the Borrower class and on it we can call and write;
@@ -143,6 +168,9 @@ class Book
     end
     puts (y/(self.rating.length)).round(1)
   end
-
-
 end
+
+
+
+
+
